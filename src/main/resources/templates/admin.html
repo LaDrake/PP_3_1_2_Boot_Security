@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Spring Security Example</title>
+  <style>table th, table td {padding: 5px;}</style>
+</head>
+
+<body>
+<h1>Admin, welcome spring boot security page!</h1>
+
+<table border="1">
+  <tr>
+    <th>name</th>
+    <th>surname</th>
+    <th>age</th>
+    <th>operation</th>
+  </tr>
+  <tr th:each="user: ${list} ">
+    <td th:text="${user.username}">name</td>
+    <td th:text="${user.surname}">surname</td>
+    <td th:text="${user.age}">age</td>
+    <td>
+      <form th:method="GET" th:action="@{/admin/edit}">
+        <input type="hidden" name="id" th:value="${user.id}" />
+        <input type="submit" value="Update"/>
+      </form>
+    </td>
+    <td><form th:method="POST" th:action="@{/admin/delete}">
+      <input type="hidden" name="id" th:value="${user.id}" />
+      <input type="submit" value="Delete"/>
+    </form>
+    </td>
+  </tr>
+
+</table>
+
+<br>
+
+<input type="button" th:value="add"
+       onclick="window.location.href = 'admin/new'"/>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

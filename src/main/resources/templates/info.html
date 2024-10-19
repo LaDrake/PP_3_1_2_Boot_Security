@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h2>Info</h2>
+<br>
+<form th:method="POST" th:action="@{/admin/createUser}" th:object="${user}">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <br/>
+
+    <label for="surname">Surname</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <br>
+
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <label for="password"> Введите пароль:</label>
+    <input type="password" name="password" id="password"/>
+    <br>
+    <br>
+    <br>
+
+    <input type="submit" value="Add"/>
+  </div>
+</form>
+</body>
+</html>
